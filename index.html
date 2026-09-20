@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ServiFind | Find Local Services</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <a href="#home" class="brand">
+            <span class="brand-mark">S</span>
+
+            <span>
+                Servi<span class="brand-green">Find</span>
+            </span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#providers">Providers</a>
+            <a href="#emergency">Emergency</a>
+            <a href="#dashboard">Dashboard</a>
+        </nav>
+
+        <div class="top-actions">
+
+            <button id="themeToggle" class="icon-btn">
+                ☾
+            </button>
+
+            <button id="locationBtn" class="outline-btn">
+                📍 Location
+            </button>
+
+            <button id="loginBtn" class="primary-btn">
+                Login
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    LOCAL SERVICES, MADE SIMPLE
+                </p>
+
+                <h1>
+                    Find trusted help
+                    <span>near you.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Search, compare, message, call and book service providers across Nigeria.
+                </p>
+
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        id="heroSearch"
+                        type="search"
+                        placeholder="What service do you need? e.g. plumber"
+                    >
+
+                    <select id="stateSelect">
+
+                        <option value="">
+                            All Nigeria
+                        </option>
+
+                        <option>Lagos</option>
+                        <option>Abuja (FCT)</option>
+                        <option>Rivers</option>
+                        <option>Oyo</option>
+                        <option>Ogun</option>
+                        <option>Kano</option>
+                        <option>Enugu</option>
+                        <option>Delta</option>
+                        <option>Edo</option>
+                        <option>Kaduna</option>
+                        <option>Cross River</option>
+                        <option>Other</option>
+
+                    </select>
+
+                    <button id="searchBtn" class="primary-btn">
+                        Search
+                    </button>
+
+                </div>
+
+
+                <div class="hero-stats">
+
+                    <span>
+                        <b>500+</b>
+                        providers
+                    </span>
+
+                    <span>
+                        <b>36</b>
+                        states + FCT
+                    </span>
+
+                    <span>
+                        <b>24/7</b>
+                        emergency help
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAP CARD -->
+
+            <div class="hero-card">
+
+                <div class="mini-map">
+
+                    <div class="map-grid"></div>
+
+                    <span class="map-pin pin-a">
+                        📍
+                    </span>
+
+                    <span class="map-pin pin-b">
+                        📍
+                    </span>
+
+                    <span class="map-pin pin-c">
+                        📍
+                    </span>
+
+                    <div class="map-label">
+                        Nigeria
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card-body">
+
+                    <div>
+
+                        <small>
+                            Your location
+                        </small>
+
+                        <strong id="heroLocation">
+                            Location not detected
+                        </strong>
+
+                    </div>
+
+                    <button
+                        id="detectHeroBtn"
+                        class="outline-btn"
+                    >
+                        Detect
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section id="services" class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        BROWSE
+                    </p>
+
+                    <h2>
+                        Popular services
+                    </h2>
+
+                </div>
+
+                <button
+                    id="viewAllServices"
+                    class="text-btn"
+                >
+                    View all →
+                </button>
+
+            </div>
+
+
+            <div
+                id="categoryGrid"
+                class="category-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= PROVIDERS ================= -->
+
+        <section
+            id="providers"
+            class="section alt-section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        NEAR YOU
+                    </p>
+
+                    <h2>
+                        Service providers
+                    </h2>
+
+                    <p
+                        id="resultSummary"
+                        class="muted"
+                    >
+                        Showing recommended providers
+                    </p>
+
+                </div>
+
+
+                <div class="filter-row">
+
+                    <select id="serviceFilter">
+
+                        <option value="">
+                            All services
+                        </option>
+
+                    </select>
+
+
+                    <select id="ratingFilter">
+
+                        <option value="0">
+                            Any rating
+                        </option>
+
+                        <option value="4">
+                            4.0+
+                        </option>
+
+                        <option value="4.5">
+                            4.5+
+                        </option>
+
+                        <option value="4.8">
+                            4.8+
+                        </option>
+
+                    </select>
+
+
+                    <select id="priceFilter">
+
+                        <option value="0">
+                            Any price
+                        </option>
+
+                        <option value="10000">
+                            Under ₦10,000
+                        </option>
+
+                        <option value="25000">
+                            Under ₦25,000
+                        </option>
+
+                        <option value="50000">
+                            Under ₦50,000
+                        </option>
+
+                    </select>
+
+
+                    <select id="distanceFilter">
+
+                        <option value="999">
+                            Any distance
+                        </option>
+
+                        <option value="5">
+                            Under 5 km
+                        </option>
+
+                        <option value="10">
+                            Under 10 km
+                        </option>
+
+                        <option value="25">
+                            Under 25 km
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="providerGrid"
+                class="provider-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= MAP ================= -->
+
+        <section class="section split-section">
+
+            <div>
+
+                <p class="eyebrow">
+                    MAP VIEW
+                </p>
+
+                <h2>
+                    Services around your location
+                </h2>
+
+                <p class="muted">
+                    Allow location access to calculate distance from your position.
+                    Map links open in your maps app or browser.
+                </p>
+
+
+                <div class="location-box">
+
+                    <div class="location-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <strong id="locationStatus">
+                            Location permission not requested
+                        </strong>
+
+                        <span id="locationCoords">
+                            Use the Location button to detect your position.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="mapsBtn"
+                    class="primary-btn"
+                >
+                    Open Google Maps
+                </button>
+
+            </div>
+
+
+            <div
+                id="largeMap"
+                class="large-map"
+            >
+
+                <div class="map-grid"></div>
+
+                <div class="map-road road-1"></div>
+
+                <div class="map-road road-2"></div>
+
+                <span class="map-pin center-pin">
+                    📍
+                </span>
+
+                <span class="map-label map-label-2">
+                    Live map preview
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EMERGENCY ================= -->
+
+        <section
+            id="emergency"
+            class="section emergency-section"
+        >
+
+            <div>
+
+                <p class="eyebrow">
+                    24/7 QUICK ACCESS
+                </p>
+
+                <h2>
+                    Emergency services
+                </h2>
+
+                <p>
+                    Get fast access to important emergency contacts in Nigeria.
+                </p>
+
+            </div>
+
+
+            <div class="emergency-grid">
+
+                <a
+                    class="emergency-card"
+                    href="tel:112"
+                >
+                    <span>🚨</span>
+
+                    <b>
+                        Emergency
+                    </b>
+
+                    <small>
+                        112
+                    </small>
+                </a>
+
+
+                <a
+                    class="emergency-card"
+                    href="tel:199"
+                >
+
+                    <span>
+                        🚔
+                    </span>
+
+                    <b>
+                        Police
+                    </b>
+
+                    <small>
+                        199
+                    </small>
+
+                </a>
+
+
+                <a
+                    class="emergency-card"
+                    href="tel:767"
+                >
+
+                    <span>
+                        🚑
+                    </span>
+
+                    <b>
+                        Ambulance
+                    </b>
+
+                    <small>
+                        767
+                    </small>
+
+                </a>
+
+
+                <a
+                    class="emergency-card"
+                    href="tel:199"
+                >
+
+                    <span>
+                        🔥
+                    </span>
+
+                    <b>
+                        Fire Service
+                    </b>
+
+                    <small>
+                        199
+                    </small>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section
+            id="dashboard"
+            class="section dashboard-section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        PROVIDER AREA
+                    </p>
+
+                    <h2>
+                        Provider dashboard
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="providerLoginBtn"
+                    class="outline-btn"
+                >
+                    Provider login
+                </button>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="dash-card">
+
+                    <span>
+                        📅
+                    </span>
+
+                    <strong id="dashBookings">
+                        0
+                    </strong>
+
+                    <small>
+                        Bookings
+                    </small>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>
+                        💬
+                    </span>
+
+                    <strong id="dashMessages">
+                        0
+                    </strong>
+
+                    <small>
+                        Messages
+                    </small>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <strong>
+                        4.9
+                    </strong>
+
+                    <small>
+                        Average rating
+                    </small>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>
+                        ₦
+                    </span>
+
+                    <strong id="dashRevenue">
+                        ₦0
+                    </strong>
+
+                    <small>
+                        Estimated revenue
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-panel">
+
+                <h3>
+                    Recent bookings
+                </h3>
+
+                <div
+                    id="bookingList"
+                    class="booking-list"
+                >
+
+                    <p class="empty">
+                        No bookings yet. Book a provider to see bookings here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <span class="brand-mark">
+                S
+            </span>
+
+            <div>
+
+                <strong>
+                    ServiFind
+                </strong>
+
+                <p>
+                    Find local services across Nigeria.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="socials">
+
+            <a
+                href="https://instagram.com"
+                target="_blank"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://x.com"
+                target="_blank"
+            >
+                X
+            </a>
+
+            <a
+                href="https://wa.me/2348000000000"
+                target="_blank"
+            >
+                WhatsApp
+            </a>
+
+            <a href="tel:+2348000000000">
+                Call
+            </a>
+
+        </div>
+
+
+        <p class="copyright">
+            © 2026 ServiFind
+        </p>
+
+    </footer>
+
+
+    <!-- ================= LOGIN MODAL ================= -->
+
+    <div
+        id="loginModal"
+        class="modal hidden"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close="loginModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <button
+                class="close-btn"
+                data-close="loginModal"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                SERVIFIND ACCOUNT
+            </p>
+
+            <h2 id="authTitle">
+                Welcome back
+            </h2>
+
+            <p
+                id="authSubtitle"
+                class="muted"
+            >
+                Login to save favourites and manage bookings.
+            </p>
+
+
+            <form id="authForm">
+
+                <label>
+
+                    Email or phone
+
+                    <input
+                        id="authIdentifier"
+                        required
+                        placeholder="you@example.com or 080..."
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Password
+
+                    <input
+                        id="authPassword"
+                        type="password"
+                        required
+                        minlength="6"
+                        placeholder="••••••••"
+                    >
+
+                </label>
+
+
+                <button
+                    class="primary-btn full"
+                    type="submit"
+                >
+                    Continue
+                </button>
+
+            </form>
+
+
+            <button
+                id="authSwitch"
+                class="text-btn full"
+            >
+                Create a new account
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BOOKING MODAL ================= -->
+
+    <div
+        id="providerModal"
+        class="modal hidden"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close="providerModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <button
+                class="close-btn"
+                data-close="providerModal"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                BOOK PROVIDER
+            </p>
+
+            <h2 id="bookingProviderName">
+                Book service
+            </h2>
+
+
+            <form id="bookingForm">
+
+                <input
+                    type="hidden"
+                    id="bookingProviderId"
+                >
+
+
+                <label>
+
+                    Service date
+
+                    <input
+                        id="bookingDate"
+                        type="date"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Preferred time
+
+                    <input
+                        id="bookingTime"
+                        type="time"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Address
+
+                    <input
+                        id="bookingAddress"
+                        required
+                        placeholder="House number, street, area, city, state"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Service details
+
+                    <textarea
+                        id="bookingDetails"
+                        rows="3"
+                        placeholder="Tell the provider what you need"
+                    ></textarea>
+
+                </label>
+
+
+                <button
+                    class="primary-btn full"
+                    type="submit"
+                >
+                    Confirm booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MESSAGE MODAL ================= -->
+
+    <div
+        id="messageModal"
+        class="modal hidden"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close="messageModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <button
+                class="close-btn"
+                data-close="messageModal"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                MESSAGE PROVIDER
+            </p>
+
+            <h2 id="messageProviderName">
+                Message
+            </h2>
+
+
+            <div
+                id="messageThread"
+                class="message-thread"
+            >
+
+                <div class="provider-message">
+                    Hi, how can I help you?
+                </div>
+
+            </div>
+
+
+            <form
+                id="messageForm"
+                class="message-form"
+            >
+
+                <input
+                    id="messageInput"
+                    required
+                    placeholder="Write a message..."
+                >
+
+                <button
+                    class="primary-btn"
+                    type="submit"
+                >
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= REVIEW MODAL ================= -->
+
+    <div
+        id="reviewModal"
+        class="modal hidden"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close="reviewModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <button
+                class="close-btn"
+                data-close="reviewModal"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                REVIEW
+            </p>
+
+            <h2 id="reviewProviderName">
+                Rate provider
+            </h2>
+
+
+            <form id="reviewForm">
+
+                <input
+                    type="hidden"
+                    id="reviewProviderId"
+                >
+
+
+                <label>
+
+                    Rating
+
+                    <select id="reviewRating">
+
+                        <option value="5">
+                            5
+                        </option>
+
+                        <option value="4">
+                            4
+                        </option>
+
+                        <option value="3">
+                            3
+                        </option>
+
+                        <option value="2">
+                            2
+                        </option>
+
+                        <option value="1">
+                            1
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Your review
+
+                    <textarea
+                        id="reviewText"
+                        rows="4"
+                        required
+                        placeholder="Share your experience"
+                    ></textarea>
+
+                </label>
+
+
+                <button
+                    class="primary-btn full"
+                    type="submit"
+                >
+                    Submit review
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FAVOURITES ================= -->
+
+    <div
+        id="favouritePanel"
+        class="side-panel"
+    >
+
+        <div class="side-panel-head">
+
+            <h2>
+                Favourites
+            </h2>
+
+            <button
+                id="closeFavourites"
+                class="close-btn"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="favouriteList"></div>
+
+    </div>
+
+
+    <button
+        id="favouriteFab"
+        class="fab"
+        title="Open favourites"
+    >
+
+        ♡
+
+        <span id="favCount">
+            0
+        </span>
+
+    </button>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
