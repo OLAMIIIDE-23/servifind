@@ -716,4 +716,4 @@ The current project provides the frontend foundation for this system.
 
 ServiFind
 
-© 2026 ServiFind
+© 2026 ServiFind E . O
